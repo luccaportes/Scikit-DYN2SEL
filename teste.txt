@@ -1,0 +1,16 @@
+# TEST CONFIGURATION BEGIN
+# SEAGenerator(balance_classes=False, classification_function=0, noise_percentage=0.0, random_state=None)
+# [ARF] AdaptiveRandomForest(binary_split=False, disable_weighted_vote=False, drift_detection_method=ADWIN(delta=0.001), grace_period=50, lambda_value=6, leaf_prediction='nba', max_byte_size=33554432, max_features='auto', memory_estimate_period=2000000, n_estimators=10, nb_threshold=0, no_preprune=False, nominal_attributes=None, performance_metric='acc', random_state=None, remove_poor_atts=False, split_confidence=0.01, split_criterion='info_gain', stop_mem_management=False, tie_threshold=0.05, warning_detection_method=ADWIN(delta=0.01))
+# EvaluatePrequential(batch_size=1, data_points_for_classification=False, max_samples=10000, max_time=inf, metrics=['accuracy', 'model_size'], n_wait=1000, output_file='teste.txt', pretrain_size=0, restart_stream=True, show_plot=False)
+# TEST CONFIGURATION END
+id,mean_acc_[ARF],current_acc_[ARF],mean_acc_[WPS],current_acc_[WPS],model_size_[ARF],model_size_[WPS]
+999,0.946000,0.946000,0.916000,0.916000,1057.877930,1357.167969
+1999,0.962500,0.979000,0.945000,0.974000,1509.627930,1705.757812
+2999,0.970333,0.986000,0.959000,0.987000,1569.702148,2164.320312
+3999,0.974250,0.986000,0.964250,0.980000,1856.499023,2228.207031
+4999,0.976800,0.987000,0.966600,0.976000,2193.252930,2470.816406
+5999,0.979500,0.993000,0.970500,0.990000,2588.721680,2899.835938
+6999,0.980143,0.984000,0.971857,0.980000,3005.299805,3375.480469
+7999,0.981625,0.992000,0.974500,0.993000,2656.752930,3239.839844
+8999,0.982111,0.986000,0.975778,0.986000,2127.014648,3614.250000
+9999,0.983000,0.991000,0.977300,0.991000,2460.979492,4013.722656

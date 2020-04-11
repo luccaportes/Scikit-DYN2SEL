@@ -65,6 +65,6 @@ def run(args):
         pass
 
 
-p = mp.pool.Pool(4)
+p = mp.pool.Pool(mp.cpu_count())
 p.map(run, args_list, chunksize=1)
 

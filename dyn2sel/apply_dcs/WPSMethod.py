@@ -54,7 +54,7 @@ class RecallMetric(BaseMetric):
         self.index = defaultdict(int)
         self.numerator = defaultdict(int)
         self.denominator = defaultdict(int)
-        self.first_run = defaultdict(bool)
+        self.first_run = defaultdict(lambda: True)
 
     def get_value(self, predicted_class):
         if not self.first_run[predicted_class]:

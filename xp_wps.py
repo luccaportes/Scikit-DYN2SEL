@@ -7,6 +7,7 @@ from skmultiflow.evaluation import EvaluatePrequential
 from copy import deepcopy
 
 import multiprocessing as mp
+from pathos.multiprocessing import ProcessingPool
 
 generators = [(SEAGenerator(random_state=42), "SEA"),
               (AGRAWALGenerator(random_state=42), "AGRAWAL")]
@@ -21,14 +22,14 @@ classifiers = [(AdaptiveRandomForest(n_estimators=10, random_state=42), "ARF_10"
 wps_classifiers = []
 sizes = [10, 100]*3
 count = 0
-for clf, name in classifiers:
-    wps_classifiers.append((WPSMethod(deepcopy(clf),
-                                      n_selected=int(sizes[count] * 0.4),
-                                      window_size=5000,
-                                      metric="accuracy"),
-                            "WPS_ACC_" + name)
-                           )
-    count += 1
+# for clf, name in classifiers:
+#     wps_classifiers.append((WPSMethod(deepcopy(clf),
+#                                       n_selected=int(sizes[count] * 0.4),
+#                                       window_size=5000,
+#                                       metric="accuracy"),
+#                             "WPS_ACC_" + name)
+#                            )
+#     count += 1
 
 count = 0
 
@@ -42,6 +43,8 @@ for clf, name in classifiers:
     count += 1
 
 classifiers = classifiers + wps_classifiers
+
+classifiers = wps_classifiers
 
 args_list = []
 for gen in generators:
@@ -65,6 +68,6 @@ def run(args):
         pass
 
 
-p = mp.pool.Pool(mp.cpu_count())
+p = ProcessingPool(1)
 p.map(run, args_list, chunksize=1)
 

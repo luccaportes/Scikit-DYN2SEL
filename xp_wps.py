@@ -56,7 +56,7 @@ def run(args):
         gen.prepare_for_use()
         filename = "generator=" + gen_name + "&clf=" + clf_name + ".csv"
 
-        ev = EvaluatePrequential(n_wait=100, max_samples=1000,
+        ev = EvaluatePrequential(n_wait=10000, max_samples=100000,
                                  pretrain_size=0,
                                  metrics=["accuracy", "model_size", "running_time"],
                                  output_file="results/" + filename)

@@ -60,8 +60,8 @@ class RecallMetric(BaseMetric):
         if not self.first_run[predicted_class]:
             return self.numerator[predicted_class] / self.denominator[predicted_class]
         else:
-            self.first_run[predicted_class] = False
             if self.denominator[predicted_class] > (self.window_size / 4):
+                self.first_run[predicted_class] = False
                 return self.numerator[predicted_class] / self.denominator[predicted_class]
             return -1
 

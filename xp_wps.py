@@ -10,19 +10,20 @@ import multiprocessing as mp
 from pathos.multiprocessing import ProcessingPool
 import multiprocess
 
-
 generators = [
-    # (SEAGenerator(random_state=42), "SEA"),
-    # (AGRAWALGenerator(random_state=42), "AGRAWAL"),
-    (FileStream("p2.csv"), "P2")]
+    (SEAGenerator(random_state=42), "SEA"),
+    (AGRAWALGenerator(random_state=42), "AGRAWAL"),
+    (FileStream("p2.csv"), "P2")
+]
 
-classifiers = [(AdaptiveRandomForest(n_estimators=10, random_state=42), "ARF_10"),
-               (AdaptiveRandomForest(n_estimators=100, random_state=42), "ARF_100"),
-               (OzaBagging(base_estimator=HoeffdingTree(), n_estimators=10, random_state=42), "OZA_10_HT"),
-               (OzaBagging(base_estimator=HoeffdingTree(), n_estimators=100, random_state=42), "OZA_100_HT"),
-               (OzaBagging(base_estimator=NaiveBayes(), n_estimators=10, random_state=42), "OZA_10_NB"),
-               (OzaBagging(base_estimator=NaiveBayes(), n_estimators=100, random_state=42), "OZA_100_NB"),
-               ]
+classifiers = [
+    (AdaptiveRandomForest(n_estimators=10, random_state=42), "ARF_10"),
+    (AdaptiveRandomForest(n_estimators=100, random_state=42), "ARF_100"),
+    (OzaBagging(base_estimator=HoeffdingTree(), n_estimators=10, random_state=42), "OZA_10_HT"),
+    (OzaBagging(base_estimator=HoeffdingTree(), n_estimators=100, random_state=42), "OZA_100_HT"),
+    (OzaBagging(base_estimator=NaiveBayes(), n_estimators=10, random_state=42), "OZA_10_NB"),
+    (OzaBagging(base_estimator=NaiveBayes(), n_estimators=100, random_state=42), "OZA_100_NB"),
+]
 wps_classifiers = []
 sizes = [10, 100] * 3
 count = 0
@@ -58,6 +59,7 @@ for gen in generators:
 
 def run(args, sema):
     try:
+        sem.acquire()
         clf_args, gen_args = args
         clf, clf_name = clf_args
         gen, gen_name = gen_args
@@ -71,6 +73,7 @@ def run(args, sema):
                                  output_file="results/" + filename)
         ev.evaluate(stream=gen, model=clf)
         sema.release()
+        print("finished", clf_name, gen_name)
     except:
         sema.release()
         print("error with", clf_name, gen_name)
@@ -79,9 +82,14 @@ def run(args, sema):
 # p = ProcessingPool(1)
 # p.map(run, args_list, chunksize=1)
 sem = mp.Semaphore(mp.cpu_count())
+p_list = []
 for i in args_list:
     p = mp.Process(target=run, args=(i, sem))
     p.start()
-    sem.acquire()
+    p_list.append(p)
+
+for i in p_list:
+    i.join()
+
 
 # multiprocess.Pool(mp.cpu_count()).map(run, args_list)

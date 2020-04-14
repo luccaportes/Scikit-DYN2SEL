@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/p2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xp_wps.py" beforeDir="false" afterPath="$PROJECT_DIR$/xp_wps.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -169,14 +169,14 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/multiprocess/__init__.py</url>
           <line>14</line>
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

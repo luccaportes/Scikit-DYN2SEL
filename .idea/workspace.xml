@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/p2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xp_wps.py" beforeDir="false" afterPath="$PROJECT_DIR$/xp_wps.py" afterDir="false" />
     </list>
@@ -128,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586600123156</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="bug in recall metric fixed">
+      <created>1586637803259</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586637803261</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +152,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change max_samples to 100k" />
-    <option name="LAST_COMMIT_MESSAGE" value="change max_samples to 100k" />
+    <MESSAGE value="bug in recall metric fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug in recall metric fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -165,19 +174,9 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/xp_wps.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/xp_wps.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/xp_wps.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="33" />
+          <url>file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/multiprocess/__init__.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

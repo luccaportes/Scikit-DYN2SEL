@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/xp_wps_post_drift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py" beforeDir="false" afterPath="$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dyn2sel/apply_dcs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dyn2sel/apply_dcs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teste.txt" beforeDir="false" afterPath="$PROJECT_DIR$/teste.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/xp_wps.py" beforeDir="false" afterPath="$PROJECT_DIR$/xp_wps.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +44,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.xp_wps (1)">
+  <component name="RunManager" selected="Python.xp_wps_post_drift">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="DYN2SEL" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -103,11 +108,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="xp_wps_post_drift" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DYN2SEL" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xp_wps_post_drift.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.xp_wps_post_drift" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.xp_wps (1)" />
         <item itemvalue="Python.xp_wps" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -165,18 +192,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>31</line>
+          <line>36</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/site-packages/multiprocess/__init__.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py</url>
+          <line>170</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dyn2sel/apply_dcs/WPSMethod.py</url>
-          <line>106</line>
-          <option name="timeStamp" value="52" />
+          <line>182</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

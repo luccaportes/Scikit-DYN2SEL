@@ -7,9 +7,10 @@ import numpy.ma as ma
 
 
 class DYNSEMethod(DCSApplier):
-    def __init__(self, clf, chunk_size, dcs_method):
+    def __init__(self, clf, chunk_size, dcs_method, max_ensemble_size=-1):
         self.clf = clf
         self.chunk_size = chunk_size
+        self.max_ensemble_size = max_ensemble_size
         # self.n_chunks = n_chunks
         self.dcs_method = dcs_method
         self.val_set = ValidationSet()
@@ -31,11 +32,8 @@ class DYNSEMethod(DCSApplier):
 
     def predict(self, X):
         if len(self.ensemble) > 0:
-            all_predictions = self.ensemble.predict(X)
-            selected_indexes = self.dcs_method.estimate_competence(self.ensemble, X)
-            masked_predictions = ma.masked_array(all_predictions, selected_indexes)
-            final_predictions = np.max(masked_predictions, axis=1)
-            return final_predictions
+            predictions = self.dcs_method.predict(self.ensemble, X)
+            return np.array([])
         else:
             return np.array([])
 

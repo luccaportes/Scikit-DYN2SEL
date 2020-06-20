@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.base import clone
+import numpy as np
+from scipy.stats import mode
 
 
 class DCSTechnique(ABC):
@@ -14,6 +16,20 @@ class DCSTechnique(ABC):
     @abstractmethod
     def estimate_competence(self, ensemble, instance):
         pass
+
+    def predict(self, ensemble, instances):
+        competent_members = self.estimate_competence(ensemble, instances)
+        predictions_members = np.empty((instances.shape[0], len(ensemble)), dtype=np.int)
+        for index_clf, clf in enumerate(ensemble):
+            predictions_members[:, index_clf] = clf.predict(instances)
+        votes = np.zeros((instances.shape[0], np.max(predictions_members) + 1), dtype=np.int)
+        competent_members[0][0] += 1
+        for i in range(predictions_members.shape[0]):
+            comp_m = competent_members[i, :]
+            np.add.at(votes, tuple([i, predictions_members[i, :]]), comp_m)
+        return np.argmax(votes, axis=1)
+
+
 
     def fit(self, X, y):
         self.knn = clone(self.knn)

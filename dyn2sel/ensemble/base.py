@@ -2,6 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Ensemble(ABC):
+    def __init__(self):
+        self.classes_ = None
+        self.ensemble = []
+
     def __iter__(self):
         for i in self.ensemble:
             yield i

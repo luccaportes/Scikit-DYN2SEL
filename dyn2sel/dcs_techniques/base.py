@@ -13,7 +13,7 @@ class DCSTechnique(ABC):
         self.current_val_set_X = None
         self.current_val_set_y = None
 
-    @abstractmethod
+    # @abstractmethod
     def estimate_competence(self, ensemble, instance):
         pass
 
@@ -26,10 +26,8 @@ class DCSTechnique(ABC):
         competent_members[0][0] += 1
         for i in range(predictions_members.shape[0]):
             comp_m = competent_members[i, :]
-            np.add.at(votes, tuple([i, predictions_members[i, :]]), comp_m)
+            np.add.at(votes, (i, predictions_members[i, :]), comp_m)
         return np.argmax(votes, axis=1)
-
-
 
     def fit(self, X, y):
         self.knn = clone(self.knn)

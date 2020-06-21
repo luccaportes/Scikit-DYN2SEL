@@ -1,22 +1,21 @@
 from dyn2sel.apply_dcs import DCSApplier
-from dyn2sel.validation_set import ValidationSet
-from dyn2sel.ensemble import DYNSEEnsemble
+from dyn2sel.ensemble import MDEEnsemble
+from dyn2sel.dcs_techniques.mde_selection import MDESel
 
 import numpy as np
-import numpy.ma as ma
 
-
-class DYNSEMethod(DCSApplier):
-    def __init__(self, clf, chunk_size, dcs_method, max_ensemble_size=-1):
+class MDEMethod(DCSApplier):
+    def __init__(self, clf, chunk_size, max_ensemble_size=-1, alpha=0.3):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
-        # self.n_chunks = n_chunks
-        self.dcs_method = dcs_method
-        self.val_set = ValidationSet()
-        self.ensemble = DYNSEEnsemble(clf)
+        self.val_set = None
+        self.dcs_method = None
+        self.ensemble = MDEEnsemble(clf, alpha=alpha)
         self.temp_buffer_x = []
         self.temp_buffer_y = []
+        self.minority_class = -1
+
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         for x_i, y_i in zip(X, y):
@@ -25,9 +24,9 @@ class DYNSEMethod(DCSApplier):
                 self.temp_buffer_y.append(y_i)
             else:
                 self.ensemble.partial_fit(np.array(self.temp_buffer_x), np.array(self.temp_buffer_y))
-                self.val_set.replace_set(self.temp_buffer_x, self.temp_buffer_y)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))
-                self.dcs_method.fit(np.array(self.temp_buffer_x), np.array(self.temp_buffer_y))
+                self.minority_class = self.get_minority_class(self.temp_buffer_y)
+                self.dcs_method = MDESel(self.minority_class)
                 self.temp_buffer_x = []
                 self.temp_buffer_y = []
 
@@ -40,3 +39,7 @@ class DYNSEMethod(DCSApplier):
 
     def predict_proba(self, X):
         pass
+
+    def get_minority_class(self, y):
+        unique_y, counts_y = np.unique(y, return_counts=True)
+        return unique_y[np.argmin(counts_y)]

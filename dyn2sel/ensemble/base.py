@@ -13,6 +13,12 @@ class Ensemble(ABC):
     def __len__(self):
         return len(self.ensemble)
 
+    def __getitem__(self, key):
+        for i in range(len(self.ensemble)):
+            if i == key:
+                return self.ensemble[i]
+        raise IndexError
+
     @abstractmethod
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         pass

@@ -18,7 +18,7 @@ class DYNSEEnsemble(Ensemble):
             clf_copy = skmultiflow_encapsulator(clf_copy)
         clf_copy.partial_fit(X, y)
         self.add_member(clf_copy)
-        if len(self.ensemble) > self.max_size:
+        if len(self.ensemble) > self.max_size and self.max_size != -1:
             self.del_member()
 
     def predict(self, X):

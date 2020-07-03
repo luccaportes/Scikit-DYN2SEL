@@ -1,6 +1,9 @@
 from dyn2sel.ensemble import Ensemble
 from copy import deepcopy
-from skmultiflow.metrics import ClassificationPerformanceEvaluator
+try:
+    from skmultiflow.metrics import ClassificationPerformanceEvaluator
+except ImportError:
+    from skmultiflow.metrics import ClassificationMeasurements
 
 import numpy as np
 

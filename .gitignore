@@ -6,3 +6,5 @@ dyn2sel/__pycache__
 dyn2sel/apply_dcs/__pycache__
 dyn2sel/dcs_techniques/__pycache__
 dyn2sel/ensemble/__pycache__
+docs
+html

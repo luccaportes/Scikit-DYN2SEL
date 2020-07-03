@@ -13,7 +13,6 @@ class DCSTechnique(ABC):
         self.current_val_set_X = None
         self.current_val_set_y = None
 
-    # @abstractmethod
     def _estimate_competence(self, ensemble, instance):
         pass
 

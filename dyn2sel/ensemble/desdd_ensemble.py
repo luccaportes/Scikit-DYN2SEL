@@ -1,10 +1,5 @@
 from dyn2sel.ensemble import Ensemble
 from copy import deepcopy
-from skmultiflow.core import ClassifierMixin
-from dyn2sel.ensemble._skmultiflow_encapsulator import skmultiflow_encapsulator
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import balanced_accuracy_score
-from skmultiflow.drift_detection import ADWIN
 from skmultiflow.metrics import ClassificationPerformanceEvaluator
 
 import numpy as np

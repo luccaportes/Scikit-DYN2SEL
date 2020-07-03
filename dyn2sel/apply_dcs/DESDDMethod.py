@@ -7,6 +7,36 @@ from skmultiflow.drift_detection import ADWIN
 
 
 class DESDDMethod(DCSApplier):
+    """
+    DESDDMethod
+    Dynamic Ensemble Selection for Drift Detection (DESDD) method provides a different concept in Dynamic Selection.
+    Methods such as KNORA-E and KNORA-U are also referred to as DES methods because they select a subset of the
+    ensemble, which is, by definition, also an ensemble. DESDD, in contrast, creates a group of ensembles and selects
+    the one with the higher accuracy to be the predictor of the instance.
+
+    Parameters
+    ----------
+    base_ensemble : Scikit-Multiflow ensemble
+        The ensemble used for populating the ensemble of ensembles
+
+    drift_detector : Scikit-Multiflow Drift Detector, default=ADWIN()
+        The drift detector used for detecting drift on the ensemble. When a drift is detected the whole ensemble is
+        discarded and its construction starts over again.
+
+    ensemble_size : integer, default=10
+        The number of ensembles used in the ensemble of ensembles.
+
+    min_lambda : integer, default=1
+        The minimum lambda value used for online bagging in the ensemble generation process.
+
+    max_lambda : integer, default=6
+        The maximum lambda value used for online bagging in the ensemble generation process.
+
+    References
+    ----------
+        Albuquerque, R. A. S., Costa, A. F. J., Santos, E. M. dos, Sabourin, R.,Giusti, R.A. 2019. Decision-Based
+        Dynamic Ensemble Selection Method for Concept Drift.
+    """
     def __init__(self, base_ensemble, drift_detector=ADWIN(), ensemble_size=10, min_lambda=1, max_lambda=6):
         self.ensemble = DESDDEnsemble(
             base_ensemble, ensemble_size=ensemble_size,

@@ -142,7 +142,7 @@ class EvaluatePrequential(sk_ev.EvaluatePrequential):
         self.is_oracle = []
         for i in range(self.n_models):
             try:
-                self.model[i].is_oracle()
+                self.model[i]._is_oracle()
                 self.is_oracle.append(True)
             except AttributeError:
                 self.is_oracle.append(False)

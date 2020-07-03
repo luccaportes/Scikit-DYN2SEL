@@ -31,12 +31,12 @@ class DYNSEMethod(DCSApplier):
                 self.temp_buffer_x = []
                 self.temp_buffer_y = []
 
-    def predict(self, X):
+    def predict(self, X, y=None):
         if len(self.ensemble) > 0:
-            predictions = self.dcs_method.predict(self.ensemble, X)
+            predictions = self.dcs_method.predict(self.ensemble, X, y)
             return predictions
         else:
-            return np.array([])
+            return np.zeros(X.shape[0])
 
     def predict_proba(self, X):
         pass

@@ -16,7 +16,6 @@ class MDEMethod(DCSApplier):
         self.temp_buffer_y = []
         self.minority_class = -1
 
-
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         for x_i, y_i in zip(X, y):
             if len(self.temp_buffer_x) < self.chunk_size:
@@ -30,9 +29,9 @@ class MDEMethod(DCSApplier):
                 self.temp_buffer_x = []
                 self.temp_buffer_y = []
 
-    def predict(self, X):
+    def predict(self, X, y=None):
         if len(self.ensemble) > 0:
-            predictions = self.dcs_method.predict(self.ensemble, X)
+            predictions = self.dcs_method.predict(self.ensemble, y)
             return predictions
         else:
             return np.array([])

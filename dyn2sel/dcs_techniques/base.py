@@ -14,11 +14,11 @@ class DCSTechnique(ABC):
         self.current_val_set_y = None
 
     # @abstractmethod
-    def estimate_competence(self, ensemble, instance):
+    def _estimate_competence(self, ensemble, instance):
         pass
 
-    def predict(self, ensemble, instances):
-        competent_members = self.estimate_competence(ensemble, instances)
+    def predict(self, ensemble, instances, real_labels=None):
+        competent_members = self._estimate_competence(ensemble, instances)
         predictions_members = np.empty((instances.shape[0], len(ensemble)), dtype=np.int)
         for index_clf, clf in enumerate(ensemble):
             predictions_members[:, index_clf] = clf.predict(instances)

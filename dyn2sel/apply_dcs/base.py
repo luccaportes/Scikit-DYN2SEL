@@ -10,9 +10,16 @@ class DCSApplier(ClassifierMixin):
         pass
 
     @abstractmethod
-    def predict(self, X):
+    def predict(self, X, y=None):
         pass
 
     @abstractmethod
     def predict_proba(self, X):
         pass
+
+    def score(self, X, y, sample_weight=None):
+        from sklearn.metrics import accuracy_score
+        return accuracy_score(y, self.predict(X, y), sample_weight=sample_weight)
+
+    def is_oracle(self):
+        return self.dcs_method.is_oracle()

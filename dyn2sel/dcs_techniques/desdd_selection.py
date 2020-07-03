@@ -4,5 +4,5 @@ from scipy.stats import mode
 
 
 class DESDDSel(DCSTechnique):
-    def predict(self, ensemble, instances):
+    def predict(self, ensemble, instances, real_labels=None):
         return ensemble[ensemble.get_max_accuracy()].predict(instances)

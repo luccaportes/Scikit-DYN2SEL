@@ -1,13 +1,9 @@
-from dyn2sel.apply_dcs import DYNSEMethod, MDEMethod, DESDDMethod
-from dyn2sel.dcs_techniques import KNORAE, KNORAU, OLA, LCA, APriori,\
-    Rank, ModifiedRank, KNOP, METADES, MCB, APosteriori, KNORAE2
-from skmultiflow.meta import OzaBagging, AdaptiveRandomForest
-from skmultiflow.bayes import NaiveBayes
+from dyn2sel.apply_dcs import DYNSEMethod
+from dyn2sel.dcs_techniques import KNORAE, Oracle, KNORAU
+from dyn2sel.utils.evaluators import EvaluatePrequential as Ev2
 from skmultiflow.data import SEAGenerator
 from skmultiflow.trees import HoeffdingTree
 from skmultiflow.evaluation import EvaluatePrequential
-from skmultiflow.metrics import ClassificationPerformanceEvaluator
-import timeit
 
 setup_1 = """
 from dyn2sel.dcs_techniques import KNORAE, KNORAE2
@@ -33,23 +29,28 @@ gen = SEAGenerator(random_state=52)
 
 run = "X, y = gen.next_sample(500);clf.partial_fit(X,y);X, y = gen.next_sample(1000);clf.predict(X)"
 
-a = timeit.timeit(run, setup_1, number=5)
-b = timeit.timeit(run, setup_2, number=5)
-
-print("deslib", a)
-print("mine", b)
-
-
-
-
-
-
-# clf = DYNSEMethod(HoeffdingTree(), chunk_size=1000, dcs_method=KNORAE(), max_ensemble_size=10)
-# ev = EvaluatePrequential(n_wait=1000, max_samples=10000, pretrain_size=0)
+# a = timeit.timeit(run, setup_1, number=5)
+# b = timeit.timeit(run, setup_2, number=5)
 #
-# gen = SEAGenerator(random_state=52)
-# ev.evaluate(gen, clf)
+# print("deslib", a)
+# print("mine", b)
+
+
+gen = SEAGenerator(random_state=2)
+X, y = gen.next_sample(1000)
+clf = DYNSEMethod(HoeffdingTree(), chunk_size=1000, dcs_method=KNORAE(), max_ensemble_size=10)
+clf1 = DYNSEMethod(HoeffdingTree(), chunk_size=1000, dcs_method=KNORAU(), max_ensemble_size=10)
+clf2 = DYNSEMethod(HoeffdingTree(), chunk_size=1000, dcs_method=Oracle(), max_ensemble_size=10)
+# clf.partial_fit(X, y)
+# X, y = gen.next_sample(10000)
+# print(clf.score(X, y))
+
+ev = Ev2(n_wait=1000, max_samples=20000, pretrain_size=0)
 #
+gen = SEAGenerator(random_state=52)
+ev.evaluate(gen, [clf, clf1, clf2], ["E", "U", "ORACLE"])
+#
+
 
 
 # arf = OzaBagging()

@@ -21,9 +21,9 @@ class DESDDMethod(DCSApplier):
         self.update_detector(X, y)
         self.ensemble.partial_fit(X, y)
 
-    def predict(self, X):
+    def predict(self, X, y=None):
         if len(self.ensemble) > 0:
-            predictions = self.dcs_method.predict(self.ensemble, X)
+            predictions = self.dcs_method.predict(self.ensemble, X, y)
             return predictions
         else:
             return np.array([])

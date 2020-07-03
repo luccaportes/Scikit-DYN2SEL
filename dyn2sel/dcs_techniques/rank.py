@@ -3,7 +3,7 @@ import numpy as np
 
 
 class Rank(DCSTechnique):
-    def estimate_competence(self, ensemble, instances):
+    def _estimate_competence(self, ensemble, instances):
         neighbors_distance, neighbors_index = self.knn.kneighbors(instances, return_distance=True)
         neighbors_X = self.current_val_set_X[neighbors_index, :]  # neighbors are returned sorted
         neighbors_y = self.current_val_set_y[neighbors_index]

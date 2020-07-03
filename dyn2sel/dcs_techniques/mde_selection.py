@@ -8,7 +8,7 @@ class MDESel(DCSTechnique):
         super().__init__(n_neighbors, algorithm)
         self.minority_class = minority_class
 
-    def predict(self, ensemble, instances):
+    def predict(self, ensemble, instances, real_labels=None):
         predictions = np.empty((instances.shape[0], len(ensemble)))
         for index_clf, clf in enumerate(ensemble):
             predictions[:, index_clf] = clf.predict(instances)

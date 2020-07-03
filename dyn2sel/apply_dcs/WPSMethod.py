@@ -117,7 +117,7 @@ class WPSMethod(DCSApplier):
                 self.metrics[clf_index].update_value(predictions[pred_index], y[pred_index])
         return self
 
-    def predict(self, X):
+    def predict(self, X, y=None):
         if self.clf.ensemble is not None:
             predictions = np.array([i.predict(X) for i in self.clf.ensemble], dtype=np.float)
             metrics = np.empty(predictions.shape)
@@ -179,7 +179,7 @@ class WPSMethodPostDrift(DCSApplier):
                 self.metrics[clf_index].update_value(predictions[pred_index], y[pred_index])
         return self
 
-    def predict(self, X):
+    def predict(self, X, y):
         if self.clf.ensemble is not None and self.drift_detected:
             predictions = np.array([i.predict(X) for i in self.clf.ensemble], dtype=np.float)
             metrics = np.empty(predictions.shape)

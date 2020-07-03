@@ -5,4 +5,4 @@ from dyn2sel.apply_dcs.WPSMethod import WPSMethod, WPSMethodPostDrift
 from dyn2sel.apply_dcs.MDEMethod import MDEMethod
 
 
-all = ["DCSApplier", "DYNSEMethod", "WPSMethod", "WPSMethodPostDrift", "DESDDMethod"]
+__all__ = ["DCSApplier", "DYNSEMethod", "WPSMethod", "WPSMethodPostDrift", "DESDDMethod"]

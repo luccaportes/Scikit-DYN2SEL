@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dyn2sel/tests/apply_dcs/test_dynse.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dyn2sel/tests/apply_dcs/test_mde.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dyn2sel/tests/dcs_tecniques/knorae_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dyn2sel/tests/utils/test_prequential.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dyn2sel/apply_dcs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dyn2sel/apply_dcs/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dyn2sel/ensemble/desdd_ensemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/dyn2sel/ensemble/desdd_ensemble.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="fJdhbrrx" />
+  </component>
   <component name="ProjectId" id="1ZXJ5stjJqO6D7r9eNRcv5KQUJc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -35,6 +33,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python tests.pytest for test_mde.test_ensemble_size">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -89,7 +99,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_dynse.test_ensemble_size&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -105,7 +114,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_mde.test_ensemble_size&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -121,7 +129,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_prequential.test_equality_multiflow&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -177,12 +184,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change max_samples to 100k" />

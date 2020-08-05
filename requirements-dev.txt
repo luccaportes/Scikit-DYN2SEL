@@ -1,0 +1,5 @@
+numpy>=1.18.1
+scikit-learn>=0.22.1
+scipy>=1.4.1
+deslib>=0.3
+coverage>=5.2.1

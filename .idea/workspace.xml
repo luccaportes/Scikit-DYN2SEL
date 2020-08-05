@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="" />
+    <list default="true" id="1a083943-b96a-44d2-a8fc-ae207a5b67e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.circleci/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -166,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593763385052</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding codecov to circleci">
+      <created>1596627637261</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596627637261</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,13 +194,14 @@
     <MESSAGE value="change max_samples to 100k" />
     <MESSAGE value="bug in recall metric fixed" />
     <MESSAGE value="Documented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documented" />
+    <MESSAGE value="Adding codecov to circleci" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding codecov to circleci" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="532" y="99" width="912" height="907" key="CommitChangelistDialog2" timestamp="1593763384329">
+    <state x="532" y="99" width="912" height="907" key="CommitChangelistDialog2" timestamp="1596627636910">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="532" y="99" width="912" height="907" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1593763384329" />
+    <state x="532" y="99" width="912" height="907" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1596627636910" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1596440686105">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
@@ -232,10 +242,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1594017760988" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1593763391879">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1596627640878">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1593763391879" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053@67.27.1853.1053" timestamp="1596627640878" />
     <state x="764" y="467" width="448" height="170" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595920727315">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>

@@ -36,9 +36,9 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             echo "oi"
-            ls
+            ls ~/Scikit-DYN2SEL
             pwd
-            pip install -r ~/Scikit-DYN2SEL/requirements-dev.txt
+            # pip install -r ~/Scikit-DYN2SEL/requirements-dev.txt
       # - save_cache: # cache Python dependencies using checksum of Pipfile as the cache-key
       #     key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #     paths:

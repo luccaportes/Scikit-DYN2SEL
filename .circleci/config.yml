@@ -36,6 +36,7 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             echo "oi"
+            checkout
             ls ~/Scikit-DYN2SEL
             ls ..
             pwd

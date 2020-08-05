@@ -10,3 +10,7 @@ docs
 html
 dyn2sel/tests/.pytest_cache
 dyn2sel/*/.pytest_cache
+p2.csv
+xp_wps.py
+xp_wps_post_drift.py
+main.py

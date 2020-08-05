@@ -43,6 +43,7 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             coverage run -m pytest dyn2sel/tests/*
+            codecov
   # machine:
   #   python:
   #     version: 3.7.6

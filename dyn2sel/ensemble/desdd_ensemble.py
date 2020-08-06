@@ -3,7 +3,7 @@ from copy import deepcopy
 try:
     from skmultiflow.metrics import ClassificationPerformanceEvaluator
 except ImportError:
-    from skmultiflow.metrics import ClassificationMeasurements
+    from skmultiflow.metrics import ClassificationMeasurements as ClassificationPerformanceEvaluator
 
 import numpy as np
 
@@ -60,7 +60,10 @@ class DESDDEnsemble(Ensemble):
                 self.accuracies[index].add_result(y[i], preds[i])
 
     def get_max_accuracy(self):
-        return np.argmin([i.accuracy_score() for i in self.accuracies])
+        try:
+            return np.argmin([i.accuracy_score() for i in self.accuracies])
+        except AttributeError:
+            return np.argmin([i.get_accuracy() for i in self.accuracies])
 
 
 

@@ -64,7 +64,7 @@ class MDEMethod(DCSApplier):
 
     def predict(self, X, y=None):
         if len(self.ensemble) > 0:
-            predictions = self.dcs_method.predict(self.ensemble, y)
+            predictions = self.dcs_method.predict(self.ensemble, X)
             return predictions
         else:
             return np.array([])

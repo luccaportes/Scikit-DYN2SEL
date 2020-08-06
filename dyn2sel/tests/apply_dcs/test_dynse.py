@@ -5,6 +5,7 @@ from skmultiflow.bayes import NaiveBayes
 from dyn2sel.apply_dcs import DYNSEMethod
 from dyn2sel.dcs_techniques import KNORAE
 
+
 def test_ensemble_size():
     # since each member of the ensemble is initialized when the number of instances reach the chunk size, the size of
     # the ensemble should n_samples // chunk_size

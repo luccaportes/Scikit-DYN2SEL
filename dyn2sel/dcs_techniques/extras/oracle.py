@@ -35,7 +35,7 @@ class Oracle(DCSTechnique):
         final_pred[~at_least_one] = not_even_one
         return final_pred
 
-    def is_oracle(self):
+    def _is_oracle(self):
         return True
 
 

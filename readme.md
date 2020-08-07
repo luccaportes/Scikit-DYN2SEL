@@ -21,7 +21,7 @@ Distributed under the [MIT license]("https://github.com/luccaportes/Scikit-DYN2S
 
 ## Usage
 The usage of Scikit-DYN2SEL is very straightforward.
-```
+```python
 from skmultiflow.evaluation import EvaluatePrequential
 from skmultiflow.data import SEAGenerator
 from dyn2sel.apply_dcs import DYNSEMethod

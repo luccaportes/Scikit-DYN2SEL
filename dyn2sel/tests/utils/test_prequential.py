@@ -48,3 +48,15 @@ def test_oracle_better():
     acc_oracle = float(acc_oracle)
 
     assert acc_oracle > acc_rank
+
+
+def test_pretrain_size():
+    gen = SEAGenerator(random_state=42)
+    gen.prepare_for_use()
+    evaluator_dyn2sel = dyn2selPrequential(n_wait=100, max_samples=1000, pretrain_size=150)
+    dynse_rank = DYNSEMethod(NaiveBayes(), 100, Rank())
+    evaluator_dyn2sel.evaluate(gen, dynse_rank)
+
+    evaluator_dyn2sel = dyn2selPrequential(n_wait=100, max_samples=1000, pretrain_size=150)
+    dynse_oracle = DYNSEMethod(NaiveBayes(), 100, Oracle())
+    evaluator_dyn2sel.evaluate(gen, dynse_oracle)

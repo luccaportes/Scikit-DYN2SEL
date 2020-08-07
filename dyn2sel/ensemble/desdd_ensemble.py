@@ -26,7 +26,7 @@ class DESDDEnsemble(Ensemble):
             poiss_lambda = np.random.poisson(self.lambdas[index], X.shape[0])
             temp_x = np.repeat(X, poiss_lambda, axis=0)
             temp_y = np.repeat(y, poiss_lambda)
-            ens.partial_fit(temp_x, temp_y)
+            ens.partial_fit(temp_x, temp_y, classes=classes, sample_weight=sample_weight)
 
     def predict(self, X):
         predictions = np.empty((len(self.ensemble), X.shape[0]))

@@ -49,7 +49,7 @@ class DESDDMethod(DCSApplier):
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         self.update_detector(X, y)
-        self.ensemble.partial_fit(X, y)
+        self.ensemble.partial_fit(X, y, classes=classes, sample_weight=sample_weight)
 
     def predict(self, X, y=None):
         if len(self.ensemble) > 0:

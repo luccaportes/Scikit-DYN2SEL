@@ -21,11 +21,12 @@ class DYNSEEnsemble(Ensemble):
         if len(self.ensemble) > self.max_size != -1:
             self.del_member()
 
-    # def predict(self, X):
-    #     predictions = np.empty((len(self.ensemble), X.shape[0]))
-    #     for index_clf, clf in enumerate(self.ensemble):
-    #         predictions[index_clf] = clf.predict(X)
-    #     return predictions.T
+    def predict(self, X):
+        pass
+        # predictions = np.empty((len(self.ensemble), X.shape[0]))
+        # for index_clf, clf in enumerate(self.ensemble):
+        #     predictions[index_clf] = clf.predict(X)
+        # return predictions.T
 
     def predict_proba(self, X):
         pass

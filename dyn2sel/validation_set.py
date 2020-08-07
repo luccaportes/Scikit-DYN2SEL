@@ -29,7 +29,3 @@ class ValidationSet:
     def replace_set(self, X, y):
         self.buffer_X = X
         self.buffer_y = y
-
-
-
-

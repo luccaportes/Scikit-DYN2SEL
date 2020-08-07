@@ -1,6 +1,7 @@
 from dyn2sel.dcs_techniques.from_deslib.deslib_interface import DESLIBInterface
 import deslib.des as deslib
 
+
 class KNOP(DESLIBInterface):
     """
     KNOP
@@ -21,5 +22,6 @@ class KNOP(DESLIBInterface):
         Cavalin, Paulo R., Robert Sabourin, and Ching Y. Suen. “LoGID: An adaptive framework combining local and global
         incremental learning for dynamic selection of ensembles of HMMs.” Pattern Recognition 45.9 (2012): 3544-3556.
     """
+
     def _get_stencil(self):
         return deslib.KNOP

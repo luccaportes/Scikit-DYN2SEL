@@ -1,5 +1,6 @@
 from skmultiflow.core import BaseSKMObject, ClassifierMixin
 
+
 class skmultiflow_encapsulator(BaseSKMObject, ClassifierMixin):
     def __init__(self, clf):
         self.clf = clf

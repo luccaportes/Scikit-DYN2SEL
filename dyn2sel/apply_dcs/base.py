@@ -83,6 +83,7 @@ class DCSApplier(ClassifierMixin):
         selector to work
         """
         from sklearn.metrics import accuracy_score
+
         return accuracy_score(y, self.predict(X, y), sample_weight=sample_weight)
 
     def _is_oracle(self):

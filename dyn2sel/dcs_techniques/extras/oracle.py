@@ -18,11 +18,14 @@ class Oracle(DCSTechnique):
         Pattern Recognition, v. 47, n. 11, p. 3665 – 3680, 2014. ISSN 0031-3203. Available in:
         <http://www.sciencedirect.com/science/article/pii/S0031320314001885>.
     """
+
     def predict(self, ensemble, instances, real_labels=None):
         if real_labels is None:
-            raise ValueError("Oracle selector needs the real label to run.\n"
-                              "If you are using an evaluator please use one of the "
-                              "evaluators in dyn2sel.utils.evaluators")
+            raise ValueError(
+                "Oracle selector needs the real label to run.\n"
+                "If you are using an evaluator please use one of the "
+                "evaluators in dyn2sel.utils.evaluators"
+            )
         preds = np.empty((instances.shape[0], len(ensemble)), dtype=np.int)
         for index_clf, clf in enumerate(ensemble):
             prediction = clf.predict(instances)
@@ -37,6 +40,3 @@ class Oracle(DCSTechnique):
 
     def _is_oracle(self):
         return True
-
-
-

@@ -13,8 +13,17 @@ from dyn2sel.dcs_techniques.from_deslib.modified_rank import ModifiedRank
 from dyn2sel.dcs_techniques.extras.oracle import Oracle
 
 
-
 all = [
-       "Rank", "APosteriori","APriori", "KNOP", "KNORAE", "KNORAU",
-       "LCA", "OLA", "MCB", "METADES", "ModifiedRank", "Oracle"
+    "Rank",
+    "APosteriori",
+    "APriori",
+    "KNOP",
+    "KNORAE",
+    "KNORAU",
+    "LCA",
+    "OLA",
+    "MCB",
+    "METADES",
+    "ModifiedRank",
+    "Oracle",
 ]

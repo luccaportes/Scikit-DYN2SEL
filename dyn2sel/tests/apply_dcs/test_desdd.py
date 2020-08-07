@@ -1,4 +1,5 @@
 import sys
+
 sys.path.append("..")
 from skmultiflow.data import SEAGenerator
 from skmultiflow.bayes import NaiveBayes
@@ -36,4 +37,3 @@ def test_accuracy():
 #     desdd.partial_fit(X_post_drift, y_post_drift)
 #     new_lambdas = desdd.ensemble.lambdas
 #     o=9
-

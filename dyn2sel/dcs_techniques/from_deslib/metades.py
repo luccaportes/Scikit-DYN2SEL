@@ -22,5 +22,6 @@ class METADES(DESLIBInterface):
         Cruz, R.M., Sabourin, R., Cavalcanti, G.D. and Ren, T.I., 2015. META-DES: A dynamic ensemble selection
         framework using meta-learning. Pattern Recognition, 48(5), pp.1925-1935.
     """
+
     def _get_stencil(self):
         return deslib.METADES

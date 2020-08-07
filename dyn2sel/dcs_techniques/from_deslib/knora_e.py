@@ -22,6 +22,7 @@ class KNORAE(DESLIBInterface):
     ----------
         Ko, Albert HR, Robert Sabourin, and Alceu Souza Britto Jr. “From dynamic classifier selection to dynamic
         ensemble selection.” Pattern Recognition 41.5 (2008): 1718-1731.
-    """""
+    """ ""
+
     def _get_stencil(self):
         return deslib.KNORAE

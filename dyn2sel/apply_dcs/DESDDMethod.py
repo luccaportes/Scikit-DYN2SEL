@@ -37,10 +37,21 @@ class DESDDMethod(DCSApplier):
         Albuquerque, R. A. S., Costa, A. F. J., Santos, E. M. dos, Sabourin, R.,Giusti, R.A. 2019. Decision-Based
         Dynamic Ensemble Selection Method for Concept Drift.
     """
-    def __init__(self, base_ensemble, drift_detector=ADWIN(), ensemble_size=10, min_lambda=1, max_lambda=6):
+
+    def __init__(
+        self,
+        base_ensemble,
+        drift_detector=ADWIN(),
+        ensemble_size=10,
+        min_lambda=1,
+        max_lambda=6,
+    ):
         self.ensemble = DESDDEnsemble(
-            base_ensemble, ensemble_size=ensemble_size,
-            min_lambda=min_lambda, max_lambda=max_lambda)
+            base_ensemble,
+            ensemble_size=ensemble_size,
+            min_lambda=min_lambda,
+            max_lambda=max_lambda,
+        )
         self.drift_detector = drift_detector
         self.max_ensemble_size = ensemble_size
         self.min_lambda = min_lambda

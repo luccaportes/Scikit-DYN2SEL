@@ -25,5 +25,6 @@ class KNORAU(DESLIBInterface):
         ensemble selection.” Pattern Recognition 41.5 (2008): 1718-1731.
 
     """
+
     def _get_stencil(self):
         return deslib.KNORAU

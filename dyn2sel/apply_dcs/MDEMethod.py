@@ -38,6 +38,7 @@ class MDEMethod(DCSApplier):
         minority driven ensemble. In: Artificial Intelligence and Soft Computing. Cham: Springer International
         Publishing, 2019. p. 626–635. ISBN 978-3-030-20912-4
     """
+
     def __init__(self, clf, chunk_size, max_ensemble_size=-1, alpha=0.3):
         self.clf = clf
         self.chunk_size = chunk_size
@@ -55,7 +56,9 @@ class MDEMethod(DCSApplier):
                 self.temp_buffer_x.append(x_i)
                 self.temp_buffer_y.append(y_i)
             else:
-                self.ensemble.partial_fit(np.array(self.temp_buffer_x), np.array(self.temp_buffer_y))
+                self.ensemble.partial_fit(
+                    np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)
+                )
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))
                 self.minority_class = self.get_minority_class(self.temp_buffer_y)
                 self.dcs_method = MDESel(self.minority_class)

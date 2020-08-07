@@ -50,9 +50,12 @@ class MDEEnsemble(Ensemble):
         self.n_instances_ensemble.pop(index)
 
     def filter_outliers(self, X, y):
-        knn = KNeighborsClassifier(n_neighbors=self.n_neighbors+1).fit(X, y)
+        knn = KNeighborsClassifier(n_neighbors=self.n_neighbors + 1).fit(X, y)
         unique_y, counts_y = np.unique(y, return_counts=True)
-        minority_label, majority_label = unique_y[np.argmin(counts_y)], unique_y[np.argmax(counts_y)]
+        minority_label, majority_label = (
+            unique_y[np.argmin(counts_y)],
+            unique_y[np.argmax(counts_y)],
+        )
         minority_indexes = np.argwhere(y == minority_label).flatten()
         minority_X = X[minority_indexes]
         neighbors_index = knn.kneighbors(minority_X, return_distance=False)[:, 1:]
@@ -72,7 +75,9 @@ class MDEEnsemble(Ensemble):
             last_bac = self.bac_ensemble[i]
             last_n_instances = self.n_instances_ensemble[i]
             total_instances = current_n_instances + last_n_instances
-            new_bac = last_bac * (last_n_instances/total_instances) + current_bac * (current_n_instances/total_instances)
+            new_bac = last_bac * (last_n_instances / total_instances) + current_bac * (
+                current_n_instances / total_instances
+            )
             self.bac_ensemble[i] = new_bac
             self.n_instances_ensemble[i] = total_instances
 
@@ -80,8 +85,8 @@ class MDEEnsemble(Ensemble):
         return np.argmin(self.bac_ensemble)
 
     def remove_low_bac(self):
-        to_remove = np.argwhere(np.array(self.bac_ensemble) < (0.5 + self.alpha)).flatten()
+        to_remove = np.argwhere(
+            np.array(self.bac_ensemble) < (0.5 + self.alpha)
+        ).flatten()
         for i in to_remove:
             self.del_member(i)
-
-

@@ -39,6 +39,7 @@ class DYNSEMethod(DCSApplier):
         dynamic selection of classifiers. In:2016 IEEE 28th International Conference on Tools with Artificial
         Intelligence (ICTAI). [S.l.: s.n.]. p. 989–995. ISSN 2375-0197.
     """
+
     def __init__(self, clf, chunk_size, dcs_method, max_ensemble_size=-1):
         self.clf = clf
         self.chunk_size = chunk_size
@@ -55,10 +56,14 @@ class DYNSEMethod(DCSApplier):
                 self.temp_buffer_x.append(x_i)
                 self.temp_buffer_y.append(y_i)
             else:
-                self.ensemble.partial_fit(np.array(self.temp_buffer_x), np.array(self.temp_buffer_y))
+                self.ensemble.partial_fit(
+                    np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)
+                )
                 self.val_set.replace_set(self.temp_buffer_x, self.temp_buffer_y)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))
-                self.dcs_method.fit(np.array(self.temp_buffer_x), np.array(self.temp_buffer_y))
+                self.dcs_method.fit(
+                    np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)
+                )
                 self.temp_buffer_x = []
                 self.temp_buffer_y = []
 

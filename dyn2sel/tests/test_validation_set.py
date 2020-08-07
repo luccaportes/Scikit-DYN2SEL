@@ -21,5 +21,3 @@ def test_size():
     val_set.clear()
     assert len(val_set.buffer_X) == 0
     assert len(val_set.buffer_y) == 0
-
-

@@ -23,5 +23,6 @@ class ModifiedRank(DESLIBInterface):
         Woods, Kevin, W. Philip Kegelmeyer, and Kevin Bowyer. “Combination of multiple classifiers using local accuracy
         estimates.” IEEE transactions on pattern analysis and machine intelligence 19.4 (1997): 405-410.
     """
+
     def _get_stencil(self):
         return deslib.Rank

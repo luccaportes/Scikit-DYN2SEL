@@ -22,5 +22,6 @@ class APriori(DESLIBInterface):
         G. Giacinto and F. Roli, Methods for Dynamic Classifier Selection 10th Int. Conf. on Image Anal. and Proc.,
         Venice, Italy (1999), 659-664.
     """
+
     def _get_stencil(self):
         return deslib.APriori

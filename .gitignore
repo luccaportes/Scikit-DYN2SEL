@@ -15,3 +15,5 @@ p2.csv
 xp_wps.py
 xp_wps_post_drift.py
 main.py
+docs/_build
+docs/_build/*

@@ -43,6 +43,7 @@ jobs: # A basic unit of work in a run
       - run:
           command: |
             coverage run -m pytest dyn2sel/tests/*
+            black --check dyn2sel
             codecov -t fb6d2e31-72c2-45ff-9012-61eb097b4a14
   # machine:
   #   python:

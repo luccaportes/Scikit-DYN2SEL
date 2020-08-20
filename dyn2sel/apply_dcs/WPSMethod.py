@@ -110,11 +110,14 @@ class WPSMethod(DCSApplier):
             return [RecallMetric(window_size) for _ in range(ensemble_size)]
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
+        try:
+            for clf_index in range(len(self.clf.ensemble)):
+                predictions = self.clf.ensemble[clf_index].predict(X)
+                for pred_index in range(len(predictions)):
+                    self.metrics[clf_index].update_value(predictions[pred_index], y[pred_index])
+        except TypeError:
+            print("erro")
         self.clf.partial_fit(X, y, classes, sample_weight)
-        for clf_index in range(len(self.clf.ensemble)):
-            predictions = self.clf.ensemble[clf_index].predict(X)
-            for pred_index in range(len(predictions)):
-                self.metrics[clf_index].update_value(predictions[pred_index], y[pred_index])
         return self
 
     def predict(self, X, y=None):

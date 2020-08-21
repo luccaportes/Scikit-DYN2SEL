@@ -37,7 +37,7 @@ ev.evaluate(gen, clf)
 ## Citation
 If you use scikit-dyn2sel in a paper, please cite us as following:
 ```
-@ARTICLE{2020arXiv200808920P,
+@ARTICLE{dyn2sel,
        author = {{Portes Cavalheiro}, Lucca and {Barddal}, Jean Paul and
          {Souza de Britto Jr}, Alceu and {Heutte}, Laurent},
         title = "{scikit-dyn2sel -- A Dynamic Selection Framework for Data Streams}",

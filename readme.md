@@ -34,3 +34,23 @@ gen = SEAGenerator()
 ev = EvaluatePrequential()
 ev.evaluate(gen, clf)
 ```
+## Citation
+If you use scikit-dyn2sel in a paper, please cite us as following:
+```
+@ARTICLE{2020arXiv200808920P,
+       author = {{Portes Cavalheiro}, Lucca and {Barddal}, Jean Paul and
+         {Souza de Britto Jr}, Alceu and {Heutte}, Laurent},
+        title = "{scikit-dyn2sel -- A Dynamic Selection Framework for Data Streams}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning},
+         year = 2020,
+        month = aug,
+          eid = {arXiv:2008.08920},
+        pages = {arXiv:2008.08920},
+archivePrefix = {arXiv},
+       eprint = {2008.08920},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2020arXiv200808920P},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+```

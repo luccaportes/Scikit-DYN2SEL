@@ -6,6 +6,8 @@ results_drift
 dyn2sel/__pycache__
 dyn2sel/apply_dcs/__pycache__
 dyn2sel/dcs_techniques/__pycache__
+dyn2sel/dcs_techniques/from_deslib/__pycache__
+dyn2sel/dcs_techniques/extras/__pycache__
 dyn2sel/ensemble/__pycache__
 html
 dyn2sel/tests/.pytest_cache

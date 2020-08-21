@@ -16,3 +16,8 @@ xp_wps_post_drift.py
 main.py
 docs/_build
 docs/_build/*
+build/
+build/*
+dist
+dist/*
+MANIFEST

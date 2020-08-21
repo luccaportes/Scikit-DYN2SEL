@@ -24,6 +24,7 @@ The usage of Scikit-DYN2SEL is very straightforward.
 ```python
 from skmultiflow.evaluation import EvaluatePrequential
 from skmultiflow.data import SEAGenerator
+from skmultiflow.trees import HoeffdingTree
 from dyn2sel.apply_dcs import DYNSEMethod
 from dyn2sel.dcs_techniques import KNORAE
 

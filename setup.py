@@ -1,8 +1,10 @@
 from distutils.core import setup
+from setuptools import find_packages
+
 setup(
   name = 'dyn2sel',         # How you named your package folder (MyLib)
-  packages = ['dyn2sel'],   # Chose the same as "name"
-  version = '0.1',      # Start with a small number and increase it with every change you make
+  packages = ['dyn2sel', 'dyn2sel.apply_dcs', 'dyn2sel.dcs_techniques', 'dyn2sel.ensemble'],   # Chose the same as "name"
+  version = '0.1.1',      # Start with a small number and increase it with every change you make
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'A framework for applying and implementing DCS techniques in the data stream mining context.',   # Give a short description about your library
   author = 'Lucca Portes',                   # Type in your name

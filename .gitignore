@@ -21,3 +21,5 @@ build/*
 dist
 dist/*
 MANIFEST
+dyn2sel.egg-info
+dyn2sel.egg-info/*

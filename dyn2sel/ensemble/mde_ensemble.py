@@ -1,11 +1,11 @@
-from dyn2sel.ensemble import Ensemble
 from copy import deepcopy
-from skmultiflow.core import ClassifierMixin
-from dyn2sel.ensemble._skmultiflow_encapsulator import skmultiflow_encapsulator
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import balanced_accuracy_score
 
 import numpy as np
+from dyn2sel.ensemble import Ensemble
+from dyn2sel.ensemble._skmultiflow_encapsulator import skmultiflow_encapsulator
+from sklearn.metrics import balanced_accuracy_score
+from sklearn.neighbors import KNeighborsClassifier
+from skmultiflow.core import ClassifierMixin
 
 
 class MDEEnsemble(Ensemble):
@@ -76,7 +76,7 @@ class MDEEnsemble(Ensemble):
             last_n_instances = self.n_instances_ensemble[i]
             total_instances = current_n_instances + last_n_instances
             new_bac = last_bac * (last_n_instances / total_instances) + current_bac * (
-                current_n_instances / total_instances
+                    current_n_instances / total_instances
             )
             self.bac_ensemble[i] = new_bac
             self.n_instances_ensemble[i] = total_instances

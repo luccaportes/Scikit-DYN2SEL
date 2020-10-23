@@ -7,7 +7,13 @@ class skmultiflow_encapsulator(BaseSKMObject, ClassifierMixin):
 
     @property
     def classes_(self):
-        return self.clf._classes
+        try:
+            return self.clf.classes
+        except AttributeError:
+            try:
+                return self.clf.classes_
+            except AttributeError:
+                return self.clf._classes
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         self.clf.partial_fit(X, y, classes=classes, sample_weight=sample_weight)

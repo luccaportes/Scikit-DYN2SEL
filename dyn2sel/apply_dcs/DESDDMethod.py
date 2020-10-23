@@ -57,10 +57,13 @@ class DESDDMethod(DCSApplier):
         self.min_lambda = min_lambda
         self.max_lambda = max_lambda
         self.dcs_method = DESDDSel()
+        self.classes = None
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
+        if self.classes is None:
+            self.classes = classes
         self.update_detector(X, y)
-        self.ensemble.partial_fit(X, y, classes=classes, sample_weight=sample_weight)
+        self.ensemble.partial_fit(X, y, classes=self.classes, sample_weight=sample_weight)
 
     def predict(self, X, y=None):
         if len(self.ensemble) > 0:

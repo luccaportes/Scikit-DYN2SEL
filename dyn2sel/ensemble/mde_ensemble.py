@@ -76,7 +76,7 @@ class MDEEnsemble(Ensemble):
             last_n_instances = self.n_instances_ensemble[i]
             total_instances = current_n_instances + last_n_instances
             new_bac = last_bac * (last_n_instances / total_instances) + current_bac * (
-                    current_n_instances / total_instances
+                current_n_instances / total_instances
             )
             self.bac_ensemble[i] = new_bac
             self.n_instances_ensemble[i] = total_instances

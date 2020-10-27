@@ -9,6 +9,7 @@ class BalancedAccuracyEvaluator:
     of the balanced_accuracy_score present is scikit-learn. The way to compute it
     is based on the way it was implemented in its original version on scikit-learn.
     """
+
     def __init__(self):
         self._dict_hits = defaultdict(int)
         self._dict_total = defaultdict(int)
@@ -31,7 +32,11 @@ class BalancedAccuracyEvaluator:
         self._dict_total[y_true] += 1
 
     def get_bac(self):
-        diag = np.array([self._dict_hits[key] for key in sorted(self._dict_total.keys())])
-        total = np.array([self._dict_total[key] for key in sorted(self._dict_total.keys())])
-        per_class = diag/total
+        diag = np.array(
+            [self._dict_hits[key] for key in sorted(self._dict_total.keys())]
+        )
+        total = np.array(
+            [self._dict_total[key] for key in sorted(self._dict_total.keys())]
+        )
+        per_class = diag / total
         return np.mean(per_class)

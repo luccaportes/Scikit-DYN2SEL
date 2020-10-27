@@ -3,6 +3,7 @@ from copy import deepcopy
 import numpy as np
 from dyn2sel.ensemble import Ensemble
 from dyn2sel.ensemble._skmultiflow_encapsulator import skmultiflow_encapsulator
+from dyn2sel.utils import BalancedAccuracyEvaluator
 from sklearn.metrics import balanced_accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from skmultiflow.core import ClassifierMixin
@@ -41,7 +42,7 @@ class MDEEnsemble(Ensemble):
 
     def add_member(self, clf):
         self.ensemble.append(clf)
-        self.bac_ensemble.append(0.0)
+        self.bac_ensemble.append(BalancedAccuracyEvaluator())
         self.n_instances_ensemble.append(0)
 
     def del_member(self, index=-1):
@@ -70,23 +71,15 @@ class MDEEnsemble(Ensemble):
 
     def update_bac(self, X, y):
         for i in range(len(self.ensemble)):
-            current_bac = balanced_accuracy_score(y, self.ensemble[i].predict(X))
-            current_n_instances = y.shape[0]
-            last_bac = self.bac_ensemble[i]
-            last_n_instances = self.n_instances_ensemble[i]
-            total_instances = current_n_instances + last_n_instances
-            new_bac = last_bac * (last_n_instances / total_instances) + current_bac * (
-                current_n_instances / total_instances
-            )
-            self.bac_ensemble[i] = new_bac
-            self.n_instances_ensemble[i] = total_instances
+            self.bac_ensemble[i].add_results(y, self.ensemble[i].predict(X))
 
     def get_worst_bac(self):
-        return np.argmin(self.bac_ensemble)
+        return np.argmin([i.get_bac() for i in self.bac_ensemble])
 
     def remove_low_bac(self):
+        bacs = [i.get_bac() for i in self.bac_ensemble]
         to_remove = np.argwhere(
-            np.array(self.bac_ensemble) < (0.5 + self.alpha)
+            np.array(bacs) < (0.5 + self.alpha)
         ).flatten()
         for i in to_remove:
             self.del_member(i)

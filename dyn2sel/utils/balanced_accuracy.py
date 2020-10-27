@@ -23,7 +23,7 @@ class BalancedAccuracyEvaluator:
         y_pred : 1d array-like
             Estimated targets as returned by a classifier.
         """
-        for i in range(len(y_true)):
+        for i, _ in enumerate(y_true):
             self._add_result(y_true[i], y_pred[i])
 
     def _add_result(self, y_true, y_pred):

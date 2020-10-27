@@ -78,8 +78,6 @@ class MDEEnsemble(Ensemble):
 
     def remove_low_bac(self):
         bacs = [i.get_bac() for i in self.bac_ensemble]
-        to_remove = np.argwhere(
-            np.array(bacs) < (0.5 + self.alpha)
-        ).flatten()
+        to_remove = np.argwhere(np.array(bacs) < (0.5 + self.alpha)).flatten()
         for i in to_remove:
             self.del_member(i)

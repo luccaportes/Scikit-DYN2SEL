@@ -8,7 +8,7 @@ import copy
 import numpy as np
 
 
-class PDCESMethod(DCSApplier):
+class DPDES(DCSApplier):
     """
     PDCESMethod
     The Preprocess Dynamic Classsifier Ensemble Selection (PDCES) is not only a selection method but a whole framework
@@ -68,12 +68,12 @@ class PDCESMethod(DCSApplier):
                 self.temp_buffer_x.append(x_i)
                 self.temp_buffer_y.append(y_i)
             else:
-                self.ensemble.partial_fit(
-                    np.array(self.temp_buffer_x), np.array(self.temp_buffer_y), classes=classes
-                )
                 preproc_method = copy.deepcopy(self.preprocess)
                 X_res, y_res = preproc_method.fit_resample(
                     self.temp_buffer_x, self.temp_buffer_y
+                )
+                self.ensemble.partial_fit(
+                    X_res, y_res
                 )
                 self.val_set.replace_set(X_res, y_res)
                 self.dcs_method.fit(X_res, y_res)

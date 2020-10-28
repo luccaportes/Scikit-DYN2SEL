@@ -7,12 +7,13 @@ from dyn2sel.utils import BalancedAccuracyEvaluator
 from skmultiflow.core import ClassifierMixin
 
 
-class PDCESEnsemble(Ensemble):
-    def __init__(self, clf, max_size=10):
+class DPDESEnsemble(Ensemble):
+    def __init__(self, clf, max_size=10, alpha=0.3):
         super().__init__()
         self.clf = clf
         self.max_size = max_size
         self.bac_ensemble = []
+        self.alpha = alpha
 
     def partial_fit(self, X, y, classes=None, sample_weight=None):
         self.update_bac(X, y)
@@ -47,3 +48,9 @@ class PDCESEnsemble(Ensemble):
 
     def get_worst_bac(self):
         return np.argmin([i.get_bac() for i in self.bac_ensemble])
+
+    def remove_low_bac(self):
+        bacs = [i.get_bac() for i in self.bac_ensemble]
+        to_remove = np.argwhere(np.array(bacs) < (0.5 + self.alpha)).flatten()
+        for i in to_remove:
+            self.del_member(i)

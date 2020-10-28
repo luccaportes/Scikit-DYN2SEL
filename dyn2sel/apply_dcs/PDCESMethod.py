@@ -64,7 +64,7 @@ class PDCESMethod(DCSApplier):
         self.val_set = ValidationSet()
         self.dcs_method = dcs_method
         self.preprocess = preprocess
-        self.ensemble = PDCESEnsemble(clf, bagging_size)
+        self.ensemble = PDCESEnsemble(clf, max_ensemble_size, bagging_size)
         self.temp_buffer_x = []
         self.temp_buffer_y = []
 
@@ -75,7 +75,9 @@ class PDCESMethod(DCSApplier):
                 self.temp_buffer_y.append(y_i)
             else:
                 self.ensemble.partial_fit(
-                    np.array(self.temp_buffer_x), np.array(self.temp_buffer_y), classes=classes
+                    np.array(self.temp_buffer_x),
+                    np.array(self.temp_buffer_y),
+                    classes=classes,
                 )
                 preproc_method = copy.deepcopy(self.preprocess)
                 X_res, y_res = preproc_method.fit_resample(

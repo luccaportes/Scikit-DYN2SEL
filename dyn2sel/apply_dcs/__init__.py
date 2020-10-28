@@ -6,5 +6,11 @@ from dyn2sel.apply_dcs.PDCESMethod import PDCESMethod
 from dyn2sel.apply_dcs.DPDESMethod import DPDESMethod
 
 
-__all__ = ["DCSApplier", "DYNSEMethod", "DESDDMethod",
-           "MDEMethod", "PDCESMethod", "DPDESMethod"]
+__all__ = [
+    "DCSApplier",
+    "DYNSEMethod",
+    "DESDDMethod",
+    "MDEMethod",
+    "PDCESMethod",
+    "DPDESMethod",
+]

@@ -23,11 +23,20 @@ class StratifiedBagging:
             new_y = []
             for j in np.unique(y):
                 filtered_x = X[y == j]
-                stratified_bag = list(filtered_x[np.random.choice(filtered_x.shape[0], len(filtered_x), replace=True), :])
+                stratified_bag = list(
+                    filtered_x[
+                        np.random.choice(
+                            filtered_x.shape[0], len(filtered_x), replace=True
+                        ),
+                        :,
+                    ]
+                )
                 new_X += stratified_bag
-                new_y += [j]*len(stratified_bag)
+                new_y += [j] * len(stratified_bag)
             new_X, new_y = shuffle(new_X, new_y)
-            self.ensemble[index].partial_fit(np.array(new_X), np.array(new_y), self.classes_)
+            self.ensemble[index].partial_fit(
+                np.array(new_X), np.array(new_y), self.classes_
+            )
         return self
 
     def partial_fit(self, X, y, classes=None):
@@ -45,7 +54,7 @@ class PDCESEnsemble(Ensemble):
     def __init__(self, clf, max_size=10, bagging_size=5):
         super().__init__()
         self.clf = clf
-        self.max_size = max_size
+        self.max_size = max_size if max_size > 0 else float("inf")
         self.bac_ensemble = []
         self.bagging_size = bagging_size
 

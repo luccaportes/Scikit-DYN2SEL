@@ -22,7 +22,9 @@ class DESLIBInterface(DCSTechnique):
     def predict(self, ensemble, instances, real_labels=None):
         if self.needs_fitting:
             self.deslib_alg = self.deslib_stencil(ensemble, k=self.n_neighbors)
-            self.deslib_alg.fit(np.array(self.current_val_set_X), np.array(self.current_val_set_y))
+            self.deslib_alg.fit(
+                np.array(self.current_val_set_X), np.array(self.current_val_set_y)
+            )
             self.needs_fitting = False
         return self.deslib_alg.predict(instances)
 

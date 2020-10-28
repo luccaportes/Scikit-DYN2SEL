@@ -17,8 +17,8 @@ class DPDESMethod(DCSApplier):
     The method divides the stream into chunks of data with a fixed size. Each chunk is passed as a mini-batch for the
     ensemble to train on. Each data chunk is firstly sent to be predicted, then to train a new classifier and add it
     to the ensemble. The prediction step is performed using traditional DCS methods, with a validation set that is
-    defined as the last trained chunk. As this method is focused on imbalanced problems, before updating the validation
-    set, a preprocessing (over/undersampling) step is performed on the chunk.
+    defined as the last trained chunk. As this method is focused on imbalanced problems, before training and updating
+    the validation set, a preprocessing (over/undersampling) step is performed on the chunk.
 
     Parameters
     ----------
@@ -72,9 +72,7 @@ class DPDESMethod(DCSApplier):
                 X_res, y_res = preproc_method.fit_resample(
                     self.temp_buffer_x, self.temp_buffer_y
                 )
-                self.ensemble.partial_fit(
-                    X_res, y_res
-                )
+                self.ensemble.partial_fit(X_res, y_res)
                 self.val_set.replace_set(X_res, y_res)
                 self.dcs_method.fit(X_res, y_res)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))

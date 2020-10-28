@@ -6,6 +6,10 @@ from dyn2sel.ensemble.pdces_ensemble import PDCESEnsemble
 from dyn2sel.ensemble.dpdes_ensemble import DPDESEnsemble
 
 __all__ = [
-    "Ensemble", "DYNSEEnsemble", "MDEEnsemble",
-    "DESDDEnsemble", "PDCESEnsemble", "DPDESEnsemble"
+    "Ensemble",
+    "DYNSEEnsemble",
+    "MDEEnsemble",
+    "DESDDEnsemble",
+    "PDCESEnsemble",
+    "DPDESEnsemble",
 ]

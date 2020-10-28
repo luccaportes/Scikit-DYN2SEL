@@ -3,5 +3,13 @@ from dyn2sel.ensemble.dynse_ensemble import DYNSEEnsemble
 from dyn2sel.ensemble.mde_ensemble import MDEEnsemble
 from dyn2sel.ensemble.desdd_ensemble import DESDDEnsemble
 from dyn2sel.ensemble.pdces_ensemble import PDCESEnsemble
+from dyn2sel.ensemble.dpdes_ensemble import DPDESEnsemble
 
-__all__ = ["Ensemble", "DYNSEEnsemble", "MDEEnsemble", "DESDDEnsemble", "PDCESEnsemble"]
+__all__ = [
+    "Ensemble",
+    "DYNSEEnsemble",
+    "MDEEnsemble",
+    "DESDDEnsemble",
+    "PDCESEnsemble",
+    "DPDESEnsemble",
+]

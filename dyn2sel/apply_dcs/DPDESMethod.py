@@ -1,5 +1,5 @@
 from dyn2sel.apply_dcs.base import DCSApplier
-from dyn2sel.ensemble import PDCESEnsemble
+from dyn2sel.ensemble import DPDESEnsemble
 from dyn2sel.validation_set import ValidationSet
 from dyn2sel.dcs_techniques import KNORAE
 from imblearn.over_sampling import SMOTE
@@ -8,7 +8,7 @@ import copy
 import numpy as np
 
 
-class PDCESMethod(DCSApplier):
+class DPDESMethod(DCSApplier):
     """
     PDCESMethod
     The Preprocess Dynamic Classsifier Ensemble Selection (PDCES) is not only a selection method but a whole framework
@@ -17,23 +17,19 @@ class PDCESMethod(DCSApplier):
     The method divides the stream into chunks of data with a fixed size. Each chunk is passed as a mini-batch for the
     ensemble to train on. Each data chunk is firstly sent to be predicted, then to train a new classifier and add it
     to the ensemble. The prediction step is performed using traditional DCS methods, with a validation set that is
-    defined as the last trained chunk. As this method is focused on imbalanced problems, before updating the validation
-    set, a preprocessing (over/undersampling) step is performed on the chunk. The base classifiers of this ensemble
-    are all stratified bagging. The base classifier of the baggings can be anyone.
+    defined as the last trained chunk. As this method is focused on imbalanced problems, before training and updating
+    the validation set, a preprocessing (over/undersampling) step is performed on the chunk.
 
     Parameters
     ----------
     clf : Scikit-Multiflow Classifier
-        The base classifier for the bagging ensembles used for populating the ensemble.
+        The base classifier used for populating the ensemble
 
     chunk_size : integer
         The size of the chunks to accumulate data before fitting a classifier.
 
     max_ensemble_size : integer, default=-1
         The maximum size that an ensemble can grow. If -1, it grows indefinitely.
-
-    bagging_size : integer, default=5
-        The size of the bagging classifiers.
 
     dcs_method : DCSTechnique object
         Dynamic selection technique to be used in the prediction process.
@@ -53,18 +49,16 @@ class PDCESMethod(DCSApplier):
         clf,
         chunk_size,
         max_ensemble_size=-1,
-        bagging_size=5,
         dcs_method=KNORAE(),
         preprocess=SMOTE(),
     ):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
-        self.bagging_size = bagging_size
         self.val_set = ValidationSet()
         self.dcs_method = dcs_method
         self.preprocess = preprocess
-        self.ensemble = PDCESEnsemble(clf, max_ensemble_size, bagging_size)
+        self.ensemble = DPDESEnsemble(clf)
         self.temp_buffer_x = []
         self.temp_buffer_y = []
 
@@ -74,15 +68,11 @@ class PDCESMethod(DCSApplier):
                 self.temp_buffer_x.append(x_i)
                 self.temp_buffer_y.append(y_i)
             else:
-                self.ensemble.partial_fit(
-                    np.array(self.temp_buffer_x),
-                    np.array(self.temp_buffer_y),
-                    classes=classes,
-                )
                 preproc_method = copy.deepcopy(self.preprocess)
                 X_res, y_res = preproc_method.fit_resample(
                     self.temp_buffer_x, self.temp_buffer_y
                 )
+                self.ensemble.partial_fit(X_res, y_res)
                 self.val_set.replace_set(X_res, y_res)
                 self.dcs_method.fit(X_res, y_res)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))

@@ -2,6 +2,7 @@ import sys
 
 sys.path.append("..")
 from skmultiflow.data import SEAGenerator
+
 # from skmultiflow.bayes import NaiveBayes
 from skmultiflow.meta import AdaptiveRandomForest, OzaBagging
 from dyn2sel.apply_dcs import DESDDMethod

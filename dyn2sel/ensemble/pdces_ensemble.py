@@ -2,9 +2,7 @@ from copy import deepcopy
 
 import numpy as np
 from dyn2sel.ensemble import Ensemble
-from dyn2sel.ensemble._skmultiflow_encapsulator import skmultiflow_encapsulator
 from dyn2sel.utils import BalancedAccuracyEvaluator
-from skmultiflow.core import ClassifierMixin
 from scipy import stats
 from sklearn.utils import shuffle
 

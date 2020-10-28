@@ -18,18 +18,22 @@ class PDCESMethod(DCSApplier):
     ensemble to train on. Each data chunk is firstly sent to be predicted, then to train a new classifier and add it
     to the ensemble. The prediction step is performed using traditional DCS methods, with a validation set that is
     defined as the last trained chunk. As this method is focused on imbalanced problems, before updating the validation
-    set, a preprocessing (over/undersampling) step is performed on the chunk.
+    set, a preprocessing (over/undersampling) step is performed on the chunk. The base classifiers of this ensemble
+    are all stratified bagging. The base classifier of the baggings can be anyone.
 
     Parameters
     ----------
     clf : Scikit-Multiflow Classifier
-        The base classifier used for populating the ensemble
+        The base classifier for the bagging ensembles used for populating the ensemble.
 
     chunk_size : integer
         The size of the chunks to accumulate data before fitting a classifier.
 
     max_ensemble_size : integer, default=-1
         The maximum size that an ensemble can grow. If -1, it grows indefinitely.
+
+    bagging_size : integer, default=5
+        The size of the bagging classifiers.
 
     dcs_method : DCSTechnique object
         Dynamic selection technique to be used in the prediction process.
@@ -49,16 +53,18 @@ class PDCESMethod(DCSApplier):
         clf,
         chunk_size,
         max_ensemble_size=-1,
+        bagging_size=5,
         dcs_method=KNORAE(),
         preprocess=SMOTE(),
     ):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
+        self.bagging_size = bagging_size
         self.val_set = ValidationSet()
         self.dcs_method = dcs_method
         self.preprocess = preprocess
-        self.ensemble = PDCESEnsemble(clf)
+        self.ensemble = PDCESEnsemble(clf, bagging_size)
         self.temp_buffer_x = []
         self.temp_buffer_y = []
 

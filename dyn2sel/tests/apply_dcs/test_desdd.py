@@ -2,7 +2,8 @@ import sys
 
 sys.path.append("..")
 from skmultiflow.data import SEAGenerator
-from skmultiflow.bayes import NaiveBayes
+
+# from skmultiflow.bayes import NaiveBayes
 from skmultiflow.meta import AdaptiveRandomForest, OzaBagging
 from dyn2sel.apply_dcs import DESDDMethod
 
@@ -11,8 +12,8 @@ def test_accuracy():
     # an ensemble of Adaptive Random Forests should perform at the very least 80% with 200 instances of SEAGenerator
     n_samples_train = 200
     n_samples_test = 200
-    gen = SEAGenerator()
-    gen.prepare_for_use()
+    gen = SEAGenerator(noise_percentage=0.0)
+    # gen.prepare_for_use()
     arf = AdaptiveRandomForest()
     desdd = DESDDMethod(arf)
     X_train, y_train = gen.next_sample(n_samples_train)

@@ -44,7 +44,14 @@ class PDCESMethod(DCSApplier):
         Publishing, 2019. p. 626–635. ISBN 978-3-030-20912-4
     """
 
-    def __init__(self, clf, chunk_size, max_ensemble_size=-1, dcs_method=KNORAE(), preprocess=SMOTE()):
+    def __init__(
+        self,
+        clf,
+        chunk_size,
+        max_ensemble_size=-1,
+        dcs_method=KNORAE(),
+        preprocess=SMOTE(),
+    ):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
@@ -65,7 +72,9 @@ class PDCESMethod(DCSApplier):
                     np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)
                 )
                 preproc_method = copy.deepcopy(self.preprocess)
-                X_res, y_res = preproc_method.fit_resample(self.temp_buffer_x, self.temp_buffer_y)
+                X_res, y_res = preproc_method.fit_resample(
+                    self.temp_buffer_x, self.temp_buffer_y
+                )
                 self.val_set.replace_set(X_res, y_res)
                 self.dcs_method.fit(X_res, y_res)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))

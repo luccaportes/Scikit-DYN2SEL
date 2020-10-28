@@ -1,4 +1,4 @@
-from dyn2sel.apply_dcs import DCSApplier
+from dyn2sel.apply_dcs.base import DCSApplier
 from dyn2sel.ensemble import PDCESEnsemble
 from dyn2sel.validation_set import ValidationSet
 from dyn2sel.dcs_techniques import KNORAE
@@ -85,8 +85,7 @@ class PDCESMethod(DCSApplier):
         if len(self.ensemble) > 0:
             predictions = self.dcs_method.predict(self.ensemble, X)
             return predictions
-        else:
-            return np.array([])
+        return np.array([])
 
     def predict_proba(self, X):
         pass

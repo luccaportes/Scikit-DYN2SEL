@@ -10,7 +10,7 @@ def test_ensemble_size():
     chunk_size = 100
     n_samples = 1050
     gen = SEAGenerator()
-    gen.prepare_for_use()
+    # gen.prepare_for_use()
     dynse = DYNSEMethod(NaiveBayes(), chunk_size, ModifiedRank())
     X, y = gen.next_sample(n_samples)
     dynse.partial_fit(X, y)
@@ -22,8 +22,8 @@ def test_accuracy():
     chunk_size = 100
     n_samples_train = 1050
     n_samples_test = 200
-    gen = SEAGenerator()
-    gen.prepare_for_use()
+    gen = SEAGenerator(noise_percentage=0.0)
+    # gen.prepare_for_use()
     nb = NaiveBayes()
     mde = DYNSEMethod(nb, chunk_size, METADES())
     X_train, y_train = gen.next_sample(n_samples_train)

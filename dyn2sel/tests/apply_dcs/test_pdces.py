@@ -1,7 +1,7 @@
 from skmultiflow.data import SEAGenerator
 from skmultiflow.bayes import NaiveBayes
-from dyn2sel.apply_dcs import MDEMethod
-from dyn2sel.dcs_techniques import KNORAU, KNORAE
+from dyn2sel.apply_dcs import PDCESMethod
+from dyn2sel.dcs_techniques import METADES, ModifiedRank
 
 
 def test_ensemble_size():
@@ -9,12 +9,12 @@ def test_ensemble_size():
     # the ensemble should n_samples // chunk_size
     chunk_size = 100
     n_samples = 1050
-    gen = SEAGenerator(balance_classes=True)
+    gen = SEAGenerator()
     # gen.prepare_for_use()
-    mde = MDEMethod(NaiveBayes(), chunk_size, KNORAE(), alpha=0.0)
+    dynse = PDCESMethod(NaiveBayes(), chunk_size, ModifiedRank())
     X, y = gen.next_sample(n_samples)
-    mde.partial_fit(X, y)
-    assert len(mde.ensemble) == n_samples // chunk_size
+    dynse.partial_fit(X, y)
+    assert len(dynse.ensemble) == n_samples // chunk_size
 
 
 def test_accuracy():
@@ -25,7 +25,7 @@ def test_accuracy():
     gen = SEAGenerator(noise_percentage=0.0)
     # gen.prepare_for_use()
     nb = NaiveBayes()
-    mde = MDEMethod(nb, chunk_size, KNORAU())
+    mde = PDCESMethod(nb, chunk_size, METADES())
     X_train, y_train = gen.next_sample(n_samples_train)
     X_test, y_test = gen.next_sample(n_samples_test)
     mde.partial_fit(X_train, y_train)

@@ -1,6 +1,5 @@
 from dyn2sel.apply_dcs import DCSApplier
 from dyn2sel.ensemble import PDCESEnsemble
-from dyn2sel.dcs_techniques.mde_selection import MDESel
 from dyn2sel.validation_set import ValidationSet
 from dyn2sel.dcs_techniques import KNORAE
 from imblearn.over_sampling import SMOTE
@@ -12,7 +11,15 @@ import numpy as np
 class PDCESMethod(DCSApplier):
     """
     PDCESMethod
-    
+    The Preprocess Dynamic Classsifier Ensemble Selection (PDCES) is not only a selection method but a whole framework
+    that covers training an ensemble with a data stream and predicting new instances. It focuses on data that are
+    affected by the imbalanced class problem. This is done by replacing poor performing classifiers with new ones.
+    The method divides the stream into chunks of data with a fixed size. Each chunk is passed as a mini-batch for the
+    ensemble to train on. Each data chunk is firstly sent to be predicted, then to train a new classifier and add it
+    to the ensemble. The prediction step is performed using traditional DCS methods, with a validation set that is
+    defined as the last trained chunk. As this method is focused on imbalanced problems, before updating the validation
+    set, a preprocessing (over/undersampling) step is performed on the chunk.
+
     Parameters
     ----------
     clf : Scikit-Multiflow Classifier
@@ -24,9 +31,11 @@ class PDCESMethod(DCSApplier):
     max_ensemble_size : integer, default=-1
         The maximum size that an ensemble can grow. If -1, it grows indefinitely.
 
-    alpha : float between 0 and 1, default=0.3
-        Value that composes the threshold for removing classifiers with low Balanced Class Accuracy (BAC), If one
-        classifier is with value less than 0.5 + alpha, it is removed from the ensemble.
+    dcs_method : DCSTechnique object
+        Dynamic selection technique to be used in the prediction process.
+
+    preprocess : SamplerMixin object from imblearn
+        Preprocess method to use when updating the validation set
 
     References
     ----------

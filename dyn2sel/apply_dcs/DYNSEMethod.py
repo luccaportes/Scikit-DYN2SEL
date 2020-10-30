@@ -45,7 +45,7 @@ class DYNSEMethod(DCSApplier):
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
         self.dcs_method = dcs_method
-        self.val_set = ValidationSet()
+        # self.val_set = ValidationSet()
         self.ensemble = DYNSEEnsemble(clf)
         self.temp_buffer_x = []
         self.temp_buffer_y = []
@@ -59,7 +59,7 @@ class DYNSEMethod(DCSApplier):
                 self.ensemble.partial_fit(
                     np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)
                 )
-                self.val_set.replace_set(self.temp_buffer_x, self.temp_buffer_y)
+                # self.val_set.replace_set(self.temp_buffer_x, self.temp_buffer_y)
                 self.ensemble.classes_ = np.sort(np.unique(self.temp_buffer_y))
                 self.dcs_method.fit(
                     np.array(self.temp_buffer_x), np.array(self.temp_buffer_y)

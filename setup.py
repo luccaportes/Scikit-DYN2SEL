@@ -26,7 +26,7 @@ setup(
     ],  # Keywords that define your package best
     install_requires=[  # I get to this in a second
         "numpy==1.18.1",
-        "scikit-learn==0.22.1",
+        "scikit-learn==0.23.1",
         "scikit-multiflow==0.5.3",
         "scipy==1.4.1",
         "deslib==0.3",

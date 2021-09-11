@@ -1,6 +1,5 @@
 from dyn2sel.apply_dcs.base import DCSApplier
 from dyn2sel.ensemble import PDCESEnsemble
-from dyn2sel.validation_set import ValidationSet
 from dyn2sel.dcs_techniques import KNORAE
 from imblearn.over_sampling import SMOTE
 import copy

@@ -33,12 +33,6 @@ class DESDDEnsemble(Ensemble):
                 temp_x, temp_y, classes=classes, sample_weight=sample_weight
             )
 
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
     def add_member(self, clf):
         pass
 

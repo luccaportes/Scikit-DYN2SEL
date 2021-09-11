@@ -14,21 +14,13 @@ class Ensemble(ABC):
         return len(self.ensemble)
 
     def __getitem__(self, key):
-        for i in range(len(self.ensemble)):
+        for i, _ in enumerate(self.ensemble):
             if i == key:
                 return self.ensemble[i]
         raise IndexError
 
     @abstractmethod
     def partial_fit(self, X, y, classes=None, sample_weight=None):
-        pass
-
-    @abstractmethod
-    def predict(self, X):
-        pass
-
-    @abstractmethod
-    def predict_proba(self, X):
         pass
 
     @abstractmethod

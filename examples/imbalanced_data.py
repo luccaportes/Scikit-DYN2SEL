@@ -19,7 +19,7 @@ with open("dataset_imb.csv", "w") as f:
 
 generator = FileStream("dataset_imb.csv")
 
-dynse = DPDESMethod(NaiveBayes(), 200, 10, KNORAU())
+dpdes = DPDESMethod(NaiveBayes(), 200, 10, KNORAU())
 ozabag = OzaBagging(NaiveBayes(), n_estimators=10)
 
 evaluator = EvaluatePrequential(
@@ -29,4 +29,4 @@ evaluator = EvaluatePrequential(
     pretrain_size=0,
     metrics=["precision"],
 )
-evaluator.evaluate(generator, [dynse, ozabag], ["Dynse", "Ozabag"])
+evaluator.evaluate(generator, [dpdes, ozabag], ["DPDES", "Ozabag"])

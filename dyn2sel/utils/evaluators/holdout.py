@@ -10,8 +10,7 @@ class EvaluateHoldout(sk_ev.EvaluateHoldout):
         self.is_oracle = None
 
     def _periodic_holdout(self):
-        """ Method to control the holdout evaluation.
-        """
+        """Method to control the holdout evaluation."""
         self._start_time = timer()
         self._end_time = timer()
         print("Holdout Evaluation")

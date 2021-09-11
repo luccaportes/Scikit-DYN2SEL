@@ -46,7 +46,9 @@ class StratifiedBagging:
         if self.ensemble is not None:
             preds = np.array([i.predict(X) for i in self.ensemble])
             final_preds, _ = stats.mode(preds, axis=0)
-            return final_preds.reshape(-1,)
+            return final_preds.reshape(
+                -1,
+            )
         return np.array([])
 
 

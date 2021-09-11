@@ -45,7 +45,6 @@ class DYNSEMethod(DCSApplier):
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
         self.dcs_method = dcs_method
-        # self.val_set = ValidationSet()
         self.ensemble = DYNSEEnsemble(clf)
         self.temp_buffer_x = []
         self.temp_buffer_y = []

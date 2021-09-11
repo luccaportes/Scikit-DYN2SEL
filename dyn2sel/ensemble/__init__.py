@@ -13,5 +13,5 @@ __all__ = [
     "DESDDEnsemble",
     "PDCESEnsemble",
     "DPDESEnsemble",
-    "DDCSEnsemble"
+    "DDCSEnsemble",
 ]

@@ -44,14 +44,24 @@ class DDCSMethod(DCSApplier):
         Stream Classification. In:2021 IEEE International Joint Conference on Neural Networks (IJCNN).
     """
 
-    def __init__(self, clf, chunk_size, dcs_method, max_ensemble_size=-1, init_all=False, use_bagging=False):
+    def __init__(
+        self,
+        clf,
+        chunk_size,
+        dcs_method,
+        max_ensemble_size=-1,
+        init_all=False,
+        use_bagging=False,
+    ):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
         self.dcs_method = dcs_method
         self.init_all = init_all
         self.use_bagging = use_bagging
-        self.ensemble = DDCSEnsemble(clf, max_size=max_ensemble_size, init_all=init_all, use_bagging=use_bagging)
+        self.ensemble = DDCSEnsemble(
+            clf, max_size=max_ensemble_size, init_all=init_all, use_bagging=use_bagging
+        )
         self.temp_buffer_x = []
         self.temp_buffer_y = []
 
@@ -75,8 +85,7 @@ class DDCSMethod(DCSApplier):
         if len(self.ensemble) > 0:
             predictions = self.dcs_method.predict(self.ensemble, X, y)
             return predictions
-        else:
-            return np.zeros(X.shape[0])
+        return np.zeros(X.shape[0])
 
     def predict_proba(self, X):
         pass

@@ -10,7 +10,7 @@ class EvaluatePrequential(sk_ev.EvaluatePrequential):
         self.is_oracle = None
 
     def _train_and_test(self):
-        """ Method to control the prequential evaluation.
+        """Method to control the prequential evaluation.
         Returns
         -------
         BaseClassifier extension or list of BaseClassifier extensions

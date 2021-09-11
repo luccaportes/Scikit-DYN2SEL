@@ -41,10 +41,12 @@ class DDCSEnsemble(Ensemble):
         self.update_accuracies(X, y)
 
     def update_accuracies(self, X, y):
-        for index_ensemble in range(len(self.ensemble)):
+        for index_ensemble, _ in enumerate(self.ensemble):
             preds = self.ensemble[index_ensemble].predict(X)
             for index_pred in range(y.shape[0]):
-                self.acc_ensemble[index_ensemble].add_result(y[index_pred], preds[index_pred])
+                self.acc_ensemble[index_ensemble].add_result(
+                    y[index_pred], preds[index_pred]
+                )
 
     def predict(self, X):
         pass

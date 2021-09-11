@@ -14,4 +14,5 @@ __all__ = [
     "MDEMethod",
     "PDCESMethod",
     "DPDESMethod",
+    "DDCSMethod",
 ]

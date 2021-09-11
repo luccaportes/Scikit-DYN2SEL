@@ -30,15 +30,6 @@ class MDEEnsemble(Ensemble):
             self.del_member(self.get_worst_bac())
         self.add_member(clf_copy)
 
-    def predict(self, X):
-        predictions = np.empty((len(self.ensemble), X.shape[0]))
-        for index_clf, clf in enumerate(self.ensemble):
-            predictions[index_clf] = clf.predict(X)
-        return predictions.T
-
-    def predict_proba(self, X):
-        pass
-
     def add_member(self, clf):
         self.ensemble.append(clf)
         self.bac_ensemble.append(BalancedAccuracyEvaluator())

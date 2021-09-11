@@ -24,14 +24,6 @@ class Ensemble(ABC):
         pass
 
     @abstractmethod
-    def predict(self, X):
-        pass
-
-    @abstractmethod
-    def predict_proba(self, X):
-        pass
-
-    @abstractmethod
     def add_member(self, clf):
         pass
 

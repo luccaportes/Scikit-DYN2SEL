@@ -55,7 +55,6 @@ class DPDESMethod(DCSApplier):
         self.clf = clf
         self.chunk_size = chunk_size
         self.max_ensemble_size = max_ensemble_size
-        # self.val_ set = ValidationSet()
         self.dcs_method = dcs_method
         self.preprocess = preprocess
         self.ensemble = DPDESEnsemble(clf)

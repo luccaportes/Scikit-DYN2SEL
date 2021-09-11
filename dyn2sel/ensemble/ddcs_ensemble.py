@@ -48,12 +48,6 @@ class DDCSEnsemble(Ensemble):
                     y[index_pred], preds[index_pred]
                 )
 
-    def predict(self, X):
-        pass
-
-    def predict_proba(self, X):
-        pass
-
     def add_member(self, clf):
         self.ensemble.append(clf)
         self.acc_ensemble.append(ClassificationPerformanceEvaluator())

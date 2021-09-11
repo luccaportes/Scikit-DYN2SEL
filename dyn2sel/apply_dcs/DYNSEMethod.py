@@ -1,9 +1,7 @@
 from dyn2sel.apply_dcs import DCSApplier
-from dyn2sel.validation_set import ValidationSet
 from dyn2sel.ensemble import DYNSEEnsemble
 
 import numpy as np
-import numpy.ma as ma
 
 
 class DYNSEMethod(DCSApplier):

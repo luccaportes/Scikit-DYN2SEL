@@ -11,7 +11,7 @@ def test_ensemble_size():
     n_samples = 1050
     gen = SEAGenerator()
     # gen.prepare_for_use()
-    dynse = DDCSMethod(NaiveBayes(), chunk_size, ModifiedRank())
+    dynse = DDCSMethod(NaiveBayes(), chunk_size, ModifiedRank(), init_all=True, use_bagging=True)
     X, y = gen.next_sample(n_samples)
     dynse.partial_fit(X, y)
     assert len(dynse.ensemble) == n_samples // chunk_size

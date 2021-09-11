@@ -34,7 +34,7 @@ class DPDESEnsemble(Ensemble):
         self.bac_ensemble.pop(index)
 
     def update_bac(self, X, y):
-        for i in range(len(self.ensemble)):
+        for i, _ in enumerate(self.ensemble):
             self.bac_ensemble[i].add_results(y, self.ensemble[i].predict(X))
 
     def get_worst_bac(self):

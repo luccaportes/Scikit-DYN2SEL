@@ -14,7 +14,7 @@ class Ensemble(ABC):
         return len(self.ensemble)
 
     def __getitem__(self, key):
-        for i in range(len(self.ensemble)):
+        for i, _ in enumerate(self.ensemble):
             if i == key:
                 return self.ensemble[i]
         raise IndexError

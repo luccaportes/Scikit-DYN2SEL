@@ -33,12 +33,10 @@ class MDEEnsemble(Ensemble):
     def add_member(self, clf):
         self.ensemble.append(clf)
         self.bac_ensemble.append(BalancedAccuracyEvaluator())
-        # self.n_instances_ensemble.append(0)
 
     def del_member(self, index=-1):
         self.ensemble.pop(index)
         self.bac_ensemble.pop(index)
-        # self.n_instances_ensemble.pop(index)
 
     def filter_outliers(self, X, y):
         knn = KNeighborsClassifier(n_neighbors=self.n_neighbors + 1).fit(X, y)
@@ -60,7 +58,7 @@ class MDEEnsemble(Ensemble):
         return X, y
 
     def update_bac(self, X, y):
-        for i in range(len(self.ensemble)):
+        for i, _ in enumerate(self.ensemble):
             self.bac_ensemble[i].add_results(y, self.ensemble[i].predict(X))
 
     def get_worst_bac(self):

@@ -1,6 +1,6 @@
 numpy==1.18.1
 scikit-learn==0.23.1
 scikit-multiflow==0.5.3
-scipy==1.4.1
+scipy==1.10.0
 deslib==0.3
 imblearn
